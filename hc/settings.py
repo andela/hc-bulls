@@ -24,6 +24,7 @@ DEFAULT_FROM_EMAIL = 'healthchecks@example.org'
 USE_PAYMENTS = False
 
 
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -155,4 +156,8 @@ if os.path.exists(os.path.join(BASE_DIR, "hc/local_settings.py")):
 else:
     warnings.warn("local_settings.py not found, using defaults")
 
+<<<<<<< HEAD
 django_heroku.settings(locals())
+=======
+django_heroku.settings(locals())
+>>>>>>> 559eb96022129e3e476e6bdec0d60d75f1a78bad
