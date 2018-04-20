@@ -13,6 +13,8 @@ futures = "==3.0.3"
 premailer = "==2.9.6"
 "psycopg2" = "==2.7.4"
 requests = "==2.9.1"
+django-heroku = "*"
+gunicorn = "*"
 
 [dev-packages]
 
