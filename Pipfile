@@ -13,8 +13,16 @@ premailer = "==2.9.6"
 requests = "==2.9.1"
 Django = "==1.10"
 django_compressor = "==2.1"
-gunicorn = "*"
-django-heroku = "*"
+gunicorn = "==19.7.1"
+django-heroku = "==0.3.1"
+boto = "==2.48.0"
+cssselect = "==1.0.3"
+cssutils = "==1.0.2"
+dj-database-url = "==0.5.0"
+lxml = "==4.2.1"
+rjsmin = "==1.0.12"
+six = "==1.11.0"
+whitenoise = "==3.3.1"
 
 [dev-packages]
 
