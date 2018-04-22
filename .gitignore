@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
 .coverage
+/venv
 hc.sqlite
 hc/local_settings.py
 static-collected
