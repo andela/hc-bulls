@@ -36,8 +36,8 @@ jobs:
           path: test-results
           destination: tr1
 
-    general:
-      branches:
-        only:
-          - master # list of branches to build
-          - /ft-integrate-circle-ci-#156913221.*/ # or regexes
+    deployment:
+      production:
+        branch: develop
+        heroku:
+          appname: hc-bulls
