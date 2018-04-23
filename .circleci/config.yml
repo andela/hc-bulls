@@ -40,4 +40,4 @@ jobs:
       production:
         branch: develop
         heroku:
-          appname: hc-bulls
+          appname: hc-bullss
