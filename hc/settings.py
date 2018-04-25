@@ -22,6 +22,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['https://hc-bulls.herokuapp.com/']
 DEFAULT_FROM_EMAIL = 'healthchecks@example.org'
 USE_PAYMENTS = False
+DJMAIL_REAL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 
 
