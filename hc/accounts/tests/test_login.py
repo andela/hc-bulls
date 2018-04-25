@@ -29,8 +29,8 @@ class LoginTestCase(TestCase):
         self.assertIn("To log into healthchecks.io, please open the link below:", mail.outbox[0].body)
 
         # Assert that check is associated with the new user
-        check_again = Check.objects.get(code=check.code)
-        self.assertTrue(check_again.user)
+        get_check = Check.objects.get(code=check.code)
+        assert get_check.user
 
     def test_it_pops_bad_link_from_session(self):
         self.client.session["bad_link"] = True
