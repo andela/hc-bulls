@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/andela/hc-bulls/tree/develop.svg?style=svg)](https://circleci.com/gh/andela/hc-bulls/tree/develop)
 # healthchecks
 
 ![Screenshot of Welcome page](/stuff/screenshots/welcome.png?raw=true "Welcome Page")
