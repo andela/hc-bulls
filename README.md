@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/andela/hc-bulls/badge.svg?branch=chore%2Ffix-travis)](https://coveralls.io/github/andela/hc-bulls?branch=chore%2Ffix-travis)
+[![Coverage Status](https://coveralls.io/repos/github/andela/hc-bulls/badge.svg?branch=ft-Integrate-Coveralls%23156991533)](https://coveralls.io/github/andela/hc-bulls?branch=ft-Integrate-Coveralls%23156991533)
 # healthchecks
 
 ![Screenshot of Welcome page](/stuff/screenshots/welcome.png?raw=true "Welcome Page")
