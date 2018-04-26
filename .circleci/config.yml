@@ -49,7 +49,7 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-      - build-job
+      - build
       - deploy-jobs:  # only deploy when master successfully builds
           requires:
-            - build-job
+            - build
