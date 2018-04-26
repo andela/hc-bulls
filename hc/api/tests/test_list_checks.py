@@ -42,7 +42,7 @@ class ListChecksTestCase(BaseTestCase):
         checks = {check["name"]: check for check in doc["checks"]}
         self.assertEqual(2,len(checks))
         ### Assert the expected length of checks DONE
-        print(checks)
+        
         self.assertEqual(checks["Alice 1"]["timeout"],3600)
         self.assertEqual(checks["Alice 1"]["status"],"new")
         self.assertEqual(checks["Alice 1"]["grace"],900)
