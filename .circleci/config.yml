@@ -50,6 +50,4 @@ workflows:
   build-deploy:
     jobs:
       - build
-      - deploy-job:  # only deploy when master successfully builds
-          requires:
-            - build
+      - deploy-job
