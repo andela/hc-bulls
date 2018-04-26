@@ -8,7 +8,7 @@ class ApiAdminTestCase(BaseTestCase):
         super(ApiAdminTestCase, self).setUp()
         self.check = Check.objects.create(user=self.alice, tags="foo bar")
 
-        ### Set Alice to be staff and superuser and save her :)
+        ### Set Alice to be staff and superuser and save her :) DONE
         self.alice.is_staff=True
         self.alice.is_superuser=True
         self.alice.save()
@@ -20,7 +20,7 @@ class ApiAdminTestCase(BaseTestCase):
         channel.save()
         
 
-        ### Assert for the push bullet
+        ### Assert for the push bullet DONE
         response=self.client.get("/admin/api/channel/")
         self.assertContains(response,"Pushbullet")
         
