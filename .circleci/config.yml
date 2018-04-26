@@ -45,9 +45,10 @@ jobs:
               sleep 5  # sleep for 5 seconds to wait for dynos
               heroku restart
 
-workflows:
-  version: 2
-  build-deploy:
-    jobs:
-      - build
-      - deploy-job
+
+    build-deploy:
+      jobs:
+        - build-job
+        - deploy-jobs:  # only deploy when master successfully builds
+            requires:
+              - build-job
