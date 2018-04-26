@@ -29,10 +29,9 @@ class ProfileTestCase(BaseTestCase):
         check = Check(name="Test Check", user=self.alice)
         check.save()
 
-        send = self.alice.profile.send_report()
+        self.alice.profile.send_report()
 
         ### Assert that the email was sent and check email content
-        self.assertTrue(send)
         self.assertEqual(len(mail.outbox), 1)
         message = mail.outbox[0]
 
