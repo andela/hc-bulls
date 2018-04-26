@@ -31,7 +31,7 @@ jobs:
           command: |
             pipenv run "python manage.py test"
 
-    deploy:
+    deploy-job:
       docker:
         - image: my-image
       working_directory: /tmp/hc-bulls
@@ -47,9 +47,9 @@ jobs:
 
 workflows:
   version: 2
-  build:
+  build-deploy:
     jobs:
-      - build
-      - deploy:  # only deploy when master successfully builds
+      - build-job
+      - deploy-jobs:  # only deploy when master successfully builds
           requires:
-            - build
+            - build-job
