@@ -18,7 +18,7 @@ mock==2.0.0
 pbr==4.0.2
 premailer==2.9.6
 
-psycopg2==2.7.1
+
 
 psycopg2==2.7.4
 
