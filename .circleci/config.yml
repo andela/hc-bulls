@@ -30,8 +30,8 @@ jobs:
       - run:
           command: |
             pipenv run "python manage.py test"
-            
-    deploy-job:
+
+    deploy:
       docker:
         - image: my-image
       working_directory: /tmp/hc-bulls
