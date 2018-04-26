@@ -23,6 +23,7 @@ jobs:
             sudo pip install pipenv
             pipenv install
       - save_cache:
+
           key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
           paths:
             - ".venv"
@@ -33,12 +34,9 @@ jobs:
             pipenv run "python manage.py test"
 
       - deploy:
-          steps:
-            - checkout
-            - run:
-                name: Deploy develop to Heroku
-                command: |
-                  heroku git:remote -a hc-bullss
-                  git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD:refs/heads/develop
-                  sleep 5  # sleep for 5 seconds to wait for dynos
-                  heroku restart
+          name: Deploy develop to Heroku
+          command: |
+            heroku git:remote -a hc-bullss
+            git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD:refs/heads/develop
+            sleep 5  # sleep for 5 seconds to wait for dynos
+            heroku restart
