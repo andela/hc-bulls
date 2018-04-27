@@ -21,6 +21,7 @@ jobs:
       - run:
           command: |
             sudo pip install pipenv
+            sudo pip install heroku
             pipenv install
       - save_cache:
 
