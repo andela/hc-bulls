@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/andela/hc-bulls/tree/develop.svg?style=svg)](https://circleci.com/gh/andela/hc-bulls/tree/develop)
 # healthchecks
 
 ![Screenshot of Welcome page](/stuff/screenshots/welcome.png?raw=true "Welcome Page")
@@ -36,11 +37,11 @@ in development environment.
 
 * check out project code:
 
-        $ git clone https://github.com/healthchecks/healthchecks.git
+        $ git clone hhttps://github.com/andela/hc-bulls.git
 
 * install requirements (Django, ...) into virtualenv:
 
-        $ pip install -r healthchecks/requirements.txt
+        $ pip install -r hc-bulls/requirements.txt
 
 * make sure PostgreSQL server is installed and running, create
   database "hc":
@@ -50,7 +51,7 @@ in development environment.
 
 * create database tables, triggers, superuser:
 
-        $ cd ~/webapps/healthchecks
+        $ cd ~/webapps/hc-bulls
         $ ./manage.py migrate
         $ ./manage.py ensuretriggers
         $ ./manage.py createsuperuser
