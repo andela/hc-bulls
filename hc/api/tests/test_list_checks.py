@@ -10,9 +10,7 @@ class ListChecksTestCase(BaseTestCase):
 
     def setUp(self):
         super(ListChecksTestCase, self).setUp()
-
         self.now = now().replace(microsecond=0)
-
         self.a1 = Check(user=self.alice, name="Alice 1")
         self.a1.timeout = td(seconds=3600)
         self.a1.grace = td(seconds=900)
@@ -20,7 +18,6 @@ class ListChecksTestCase(BaseTestCase):
         self.a1.n_pings = 1
         self.a1.status = "new"
         self.a1.save()
-
         self.a2 = Check(user=self.alice, name="Alice 2")
         self.a2.timeout = td(seconds=86400)
         self.a2.grace = td(seconds=3600)
@@ -35,20 +32,15 @@ class ListChecksTestCase(BaseTestCase):
         r = self.get()
         ### Assert the response status code DONE
         self.assertEqual(r.status_code,200)
-
         doc = r.json()
         self.assertTrue("checks" in doc)
-
         checks = {check["name"]: check for check in doc["checks"]}
         self.assertEqual(2,len(checks))
-        ### Assert the expected length of checks DONE
-        
+        ### Assert the expected length of checks DONE        
         self.assertEqual(checks["Alice 1"]["timeout"],3600)
         self.assertEqual(checks["Alice 1"]["status"],"new")
         self.assertEqual(checks["Alice 1"]["grace"],900)
         self.assertEqual(checks["Alice 1"]["n_pings"],1)
-
-
         self.assertEqual(checks["Alice 2"]["timeout"],86400)
         self.assertEqual(checks["Alice 2"]["status"],"up")
         self.assertEqual(checks["Alice 2"]["grace"],3600)
@@ -59,7 +51,6 @@ class ListChecksTestCase(BaseTestCase):
     def test_it_shows_only_users_checks(self):
         bobs_check = Check(user=self.bob, name="Bob 1")
         bobs_check.save()
-
         r = self.get()
         data = r.json()
         self.assertEqual(len(data["checks"]), 2)
