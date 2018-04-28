@@ -51,7 +51,6 @@ class CreateCheckTestCase(BaseTestCase):
         json_response=response.json()    
         self.assertEqual(json_response["name"], "Foo")
         
-
     def test_it_handles_missing_request_body(self):
         ### Make the post request with a missing body and get the response DONE
         payload = json.dumps({"name": "Foo"})
@@ -77,7 +76,7 @@ class CreateCheckTestCase(BaseTestCase):
         self.post({"api_key": "abc", "name": False},
                   expected_error="name is not a string")
 
-    ### Test for the assignment of channels NOT DONE
+    ### Test for the assignment of channels  DONE
     ### Test for the 'timeout is too small' and 'timeout is too large' errors DONE
 
     def test_timeout_too_long(self):
@@ -87,6 +86,13 @@ class CreateCheckTestCase(BaseTestCase):
     def test_timeout_too_short(self):
         self.post({"api_key": "abc", "timeout":0},
                   expected_error="timeout is too small")
+
+    def test_assignment_of_channels(self):
+        channel=Channel(user=self.alice)
+        channel.save()
+        response=self.post({"api_key": "abc", "channels": "*"})
+        self.assertEqual(response.status_code,201)
+
 
 
 
