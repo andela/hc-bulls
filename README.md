@@ -41,7 +41,7 @@ in development environment.
 
 * install requirements (Django, ...) into virtualenv:
 
-        $ pip install -r hc-bulls/requirements.txt
+        $ pip install -r healthchecks/requirements.txt
 
 * make sure PostgreSQL server is installed and running, create
   database "hc":
@@ -51,7 +51,7 @@ in development environment.
 
 * create database tables, triggers, superuser:
 
-        $ cd ~/webapps/hc-bulls
+        $ cd ~/webapps/healthckecks
         $ ./manage.py migrate
         $ ./manage.py ensuretriggers
         $ ./manage.py createsuperuser
