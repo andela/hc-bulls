@@ -1,5 +1,5 @@
-[![CircleCI](https://circleci.com/gh/andela/hc-bulls/tree/develop.svg?style=svg)](https://circleci.com/gh/andela/hc-bulls/tree/develop)
 [![Coverage Status](https://coveralls.io/repos/github/andela/hc-bulls/badge.svg?branch=develop)](https://coveralls.io/github/andela/hc-bulls?branch=develop)
+[![CircleCI](https://circleci.com/gh/andela/hc-bulls/tree/develop.svg?style=svg)](https://circleci.com/gh/andela/hc-bulls/tree/develop)
 # healthchecks
 
 ![Screenshot of Welcome page](/stuff/screenshots/welcome.png?raw=true "Welcome Page")
