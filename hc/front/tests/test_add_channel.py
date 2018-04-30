@@ -50,3 +50,12 @@ class AddChannelTestCase(BaseTestCase):
         alice_after = Channel.objects.filter(user=alice_channel).count()
         self.assertEqual(alice_after, (alice_before + 1))
 
+    ### Test that bad kinds don't work
+    def test_bad_kinds_dont_work(self):
+        """Test that bad kinds don't work"""
+        url = "/integrations/add/"
+        form = {"kind": "bad_kind", "value": "alice@example.org"}
+        self.client.login(username="alice@example.org", password="password")
+        response = self.client.post(url, form)
+        self.assertEquals(response.status_code, 400)
+
