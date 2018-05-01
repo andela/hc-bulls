@@ -1,5 +1,6 @@
 from django.contrib.auth.hashers import make_password
 from hc.test import BaseTestCase
+from hc.accounts import views
 
 
 class CheckTokenTestCase(BaseTestCase):
@@ -33,9 +34,8 @@ class CheckTokenTestCase(BaseTestCase):
     ### Login with a bad token and check that it redirects
     def test_it_redirects_after_login_with_a_bad_token(self):
         # Login with a bad token
-        url = "/accounts/check_token/alice/invalid-token/"
-        r = self.client.post(url, follow=True)
-        self.assertRedirects(r, "/accounts/login/")
-        self.assertContains(r, "incorrect or expired")
+        resp = views.check_token(alice, "bad-token")
+        self.assertRedirects(resp, "/accounts/login/")
+        self.assertContains(r, "Bad token")
 
     ### Any other tests?
