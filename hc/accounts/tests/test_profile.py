@@ -36,7 +36,7 @@ class ProfileTestCase(BaseTestCase):
         message = mail.outbox[0]
 
         self.assertEqual(message.subject, 'Monthly Report')
-        self.assertIn("Report for this month", message.body)
+        self.assertIn("This is a monthly report sent by healthchecks.io", message.body)
 
     def test_it_adds_team_member(self):
         self.client.login(username="alice@example.org", password="password")
