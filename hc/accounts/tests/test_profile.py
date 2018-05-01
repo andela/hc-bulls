@@ -18,7 +18,7 @@ class ProfileTestCase(BaseTestCase):
         self.alice.profile.refresh_from_db()
         token = self.alice.profile.token
         # Assert that the token is set
-        self.assertTrue(len(token) > 10)
+        self.assertTrue(token)
 
         # Assert that the email was sent and check email content
         self.assertEqual(len(mail.outbox), 1)
@@ -36,7 +36,7 @@ class ProfileTestCase(BaseTestCase):
         message = mail.outbox[0]
 
         self.assertEqual(message.subject, 'Monthly Report')
-        self.assertIn("Test Check", message.body)
+        self.assertIn("Report for this month", message.body)
 
     def test_it_adds_team_member(self):
         self.client.login(username="alice@example.org", password="password")
