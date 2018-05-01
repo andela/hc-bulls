@@ -34,7 +34,7 @@ class CheckTokenTestCase(BaseTestCase):
     ### Login with a bad token and check that it redirects
     def test_it_redirects_after_login_with_a_bad_token(self):
         # Login with a bad token
-        resp = views.check_token(alice, "bad-token")
+        resp = views.check_token("alice", "bad-token")
         self.assertRedirects(resp, "/accounts/login/")
         self.assertContains(r, "Bad token")
 
