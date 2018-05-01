@@ -30,7 +30,7 @@ class LoginTestCase(TestCase):
 
         # Assert that check is associated with the new user
         get_check = Check.objects.get(code=check.code)
-        self.assertEqual(get_check.user, User.objects.get(username='alice'))
+        self.assertEqual(get_check.user, User.objects.get(email='alice@example.org'))
 
     def test_it_pops_bad_link_from_session(self):
         self.client.session["bad_link"] = True
