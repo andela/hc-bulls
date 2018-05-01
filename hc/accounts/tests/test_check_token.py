@@ -26,7 +26,8 @@ class CheckTokenTestCase(BaseTestCase):
         # Login
         self.client.login(username="alice@example.org", password="password")
         # Login again, check it redirects
-        r = self.client.post("/accounts/check_token/alice/secret-token/")
+        form = {"email": "alice@example.org"}
+        r = self.client.post("/accounts/login/", form)
         self.assertRedirects(r, "/checks/")
 
     ### Login with a bad token and check that it redirects
