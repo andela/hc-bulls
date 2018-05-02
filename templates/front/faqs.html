@@ -5,5 +5,16 @@
 <div class="row">
     <h1 class="text-center">Frequently Asked Questions</h1>
 </div>
+<div class="row">
+    <button id="first_button">+ IS THE PLATFORM FREE?</button>
+    <div class="row" id="firstQuestion">The platform is free for the first month then you get to pay through a monthly subscription</div>   
+</div>
 
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/moment.min.js' %}"></script>
+<script src="{% static 'js/faq.js' %}"></script>
 {% endblock %}
