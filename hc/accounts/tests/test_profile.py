@@ -17,9 +17,13 @@ class ProfileTestCase(BaseTestCase):
         # profile.token should be set now
         self.alice.profile.refresh_from_db()
         token = self.alice.profile.token
-        ### Assert that the token is set
+        # Assert that the token is set
+        self.assertTrue(token)
 
-        ### Assert that the email was sent and check email content
+        # Assert that the email was sent and check email content
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].subject,
+                         "Set password on healthchecks.io")
 
     def test_it_sends_report(self):
         check = Check(name="Test Check", user=self.alice)
@@ -27,7 +31,12 @@ class ProfileTestCase(BaseTestCase):
 
         self.alice.profile.send_report()
 
-        ###Assert that the email was sent and check email content
+        ### Assert that the email was sent and check email content
+        self.assertEqual(len(mail.outbox), 1)
+        message = mail.outbox[0]
+
+        self.assertEqual(message.subject, 'Monthly Report')
+        self.assertIn("This is a monthly report sent by healthchecks.io", message.body)
 
     def test_it_adds_team_member(self):
         self.client.login(username="alice@example.org", password="password")
@@ -41,10 +50,12 @@ class ProfileTestCase(BaseTestCase):
             member_emails.add(member.user.email)
 
         ### Assert the existence of the member emails
+        self.assertEqual(len(member_emails), 2)
 
         self.assertTrue("frank@example.org" in member_emails)
 
-        ###Assert that the email was sent and check email content
+        ### Assert that the email was sent and check email content
+        self.assertEqual(mail.outbox[0].subject, 'You have been invited to join alice@example.org on healthchecks.io')
 
     def test_add_team_member_checks_team_access_allowed_flag(self):
         self.client.login(username="charlie@example.org", password="password")
@@ -108,3 +119,13 @@ class ProfileTestCase(BaseTestCase):
         self.assertNotContains(r, "bobs-tag.svg")
 
     ### Test it creates and revokes API key
+    def test_it_revokes_api_key(self):
+        self.client.login(username="alice@example.org", password="password")
+
+        form = {"revoke_api_key": "1"}
+        r = self.client.post("/accounts/profile/", form)
+        assert r.status_code == 200
+
+        self.profile.refresh_from_db()
+        self.assertEqual(self.profile.api_key, "")
+
