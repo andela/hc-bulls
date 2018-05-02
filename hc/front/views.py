@@ -120,7 +120,7 @@ def docs_api(request):
 def about(request):
     return render(request, "front/about.html", {"page": "about"})
 
-def faq(requests):
+def faqs(requests):
     pass    
 
 
