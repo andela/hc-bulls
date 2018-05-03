@@ -5,8 +5,6 @@ install:
     - pip install -r requirements.txt
     - pip install mysqlclient
 env:
-  - DB=sqlite
-  - DB=mysql
   - DB=postgres
 addons:
   postgresql: "9.4"
