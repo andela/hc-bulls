@@ -153,7 +153,7 @@ EMAIL_PORT=os.environ['EMAIL_PORT']
 EMAIL_HOST_USER=os.environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD=os.environ['EMAIL_HOST_PASSWORD']
 EMAIL_USE_TLS=os.environ['EMAIL_USE_TLS']
-SITE_ROOT="hc-bullss.herokuapp.com/"
+SITE_ROOT=os.environ['SITE_ROOT']
 
 # Pushbullet integration -- override these in local_settings
 PUSHBULLET_CLIENT_ID = None
