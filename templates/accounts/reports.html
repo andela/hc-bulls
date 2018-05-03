@@ -7,7 +7,7 @@
 {% block content %}
 <div class="row">
     <div class="col-sm-12">
-        <h1 class="settings-title">Settings</h1>
+        <h1 class="settings-title">Check Reports</h1>
     </div>
     {% if messages %}
     <div class="col-sm-12">
@@ -33,7 +33,6 @@
                               value="Disabled"
                               {% if profile.reports_frequency ==  "Disabled" %} checked {% endif %}>
                                No Reports
-
                       </label>
 
                       <label>
@@ -43,7 +42,6 @@
                               value="Daily"
                               {% if profile.reports_frequency == "Daily" %} checked {% endif %}>
                                Daily
-
                       </label>
 
                       <label>
@@ -53,7 +51,6 @@
                               value="Weekly"
                               {% if profile.reports_frequency == "Weekly" %} checked {% endif %}>
                                Weekly
-
                       </label>
 
                       <label>
@@ -63,7 +60,6 @@
                               value="Monthly"
                               {% if profile.reports_frequency == "Monthly"  %} checked {% endif %}>
                                Monthly
-
                       </label>
                     <button
                         name="update_reports_allowed"
@@ -93,7 +89,7 @@
         </div>
     </div>
 
-    <div class="col-sm-6">
+    <!-- <div class="col-sm-6">
         <div class="panel panel-default">
             <div class="panel-body settings-block">
                 <h2>Team Access</h2>
@@ -150,9 +146,9 @@
                 {% endif %}
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <div class="col-sm-6">
+    <!-- <div class="col-sm-6">
         <div class="panel panel-default">
             <div class="panel-body settings-block">
                 <h2>API Access</h2>
@@ -189,7 +185,7 @@
                 {% endif %}
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 {% if badge_urls %}
@@ -223,7 +219,7 @@
 
 
 
-<div id="revoke-api-key-modal" class="modal">
+<!-- <div id="revoke-api-key-modal" class="modal">
     <div class="modal-dialog">
         <form id="revoke-api-key-form" method="post">
             {% csrf_token %}
@@ -351,7 +347,7 @@
             </div>
         </form>
     </div>
-</div>
+</div> -->
 {% endblock %}
 
 {% block scripts %}

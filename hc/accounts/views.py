@@ -156,9 +156,11 @@ def profile(request):
         elif "update_reports_allowed" in request.POST:
             form = ReportSettingsForm(request.POST)
             if form.is_valid():
-                profile.reports_allowed = form.cleaned_data["reports_allowed"]
+                profile.reports_frequency = form.data["reports_allowed"]
                 profile.save()
                 messages.success(request, "Your settings have been updated!")
+                profile.send_report()
+
         elif "invite_team_member" in request.POST:
             if not profile.team_access_allowed:
                 return HttpResponseForbidden()
@@ -218,6 +220,94 @@ def profile(request):
 
     return render(request, "accounts/profile.html", ctx)
 
+@login_required
+def reports_dashboard(request):
+    profile = request.user.profile
+    # Switch user back to its default team
+    if profile.current_team_id != profile.id:
+        request.team = profile
+        profile.current_team_id = profile.id
+        profile.save()
+
+    show_api_key = False
+    if request.method == "POST":
+        if "set_password" in request.POST:
+            profile.send_set_password_link()
+            return redirect("hc-set-password-link-sent")
+        elif "create_api_key" in request.POST:
+            profile.set_api_key()
+            show_api_key = True
+            messages.success(request, "The API key has been created!")
+        elif "revoke_api_key" in request.POST:
+            profile.api_key = ""
+            profile.save()
+            messages.info(request, "The API key has been revoked!")
+        elif "show_api_key" in request.POST:
+            show_api_key = True
+        elif "update_reports_allowed" in request.POST:
+            form = ReportSettingsForm(request.POST)
+            if form.is_valid():
+                profile.reports_frequency = form.data["reports_allowed"]
+                profile.save()
+                messages.success(request, "Your settings have been updated!")
+        elif "invite_team_member" in request.POST:
+            if not profile.team_access_allowed:
+                return HttpResponseForbidden()
+
+            form = InviteTeamMemberForm(request.POST)
+            if form.is_valid():
+
+                email = form.cleaned_data["email"]
+                try:
+                    user = User.objects.get(email=email)
+                except User.DoesNotExist:
+                    user = _make_user(email)
+
+                profile.invite(user)
+                messages.success(request, "Invitation to %s sent!" % email)
+        elif "remove_team_member" in request.POST:
+            form = RemoveTeamMemberForm(request.POST)
+            if form.is_valid():
+
+                email = form.cleaned_data["email"]
+                farewell_user = User.objects.get(email=email)
+                farewell_user.profile.current_team = None
+                farewell_user.profile.save()
+
+                Member.objects.filter(team=profile,
+                                      user=farewell_user).delete()
+
+                messages.info(request, "%s removed from team!" % email)
+        elif "set_team_name" in request.POST:
+            if not profile.team_access_allowed:
+                return HttpResponseForbidden()
+
+            form = TeamNameForm(request.POST)
+            if form.is_valid():
+                profile.team_name = form.cleaned_data["team_name"]
+                profile.save()
+                messages.success(request, "Team Name updated!")
+
+    tags = set()
+    for check in Check.objects.filter(user=request.team.user):
+        tags.update(check.tags_list())
+
+    username = request.team.user.username
+    badge_urls = []
+    for tag in sorted(tags, key=lambda s: s.lower()):
+        if not re.match("^[\w-]+$", tag):
+            continue
+
+        badge_urls.append(get_badge_url(username, tag))
+
+    ctx = {
+        "page": "profile",
+        "badge_urls": badge_urls,
+        "profile": profile,
+        "show_api_key": show_api_key
+    }
+
+    return render(request, "accounts/reports.html", ctx)
 
 @login_required
 def set_password(request, token):
