@@ -20,7 +20,6 @@ jobs:
           key: deps9-{{ .Branch }}
       - run:
           command: |
-            sudo pip install -r requirements.txt
             sudo pip install pipenv
             pipenv install
             wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
@@ -32,6 +31,7 @@ jobs:
             - "/usr/local/lib/python3.6/site-packages"
       - run:
           command: |
+            pipenv run "pip install -r requirements.txt"
             pipenv run "python manage.py collectstatic --no-input"
             pipenv run "python manage.py test"
 
