@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build-job:
     working_directory: ~/hc-bulls
     docker:
       - image: circleci/python:3.6.4
@@ -34,10 +34,23 @@ jobs:
             pipenv run "python manage.py collectstatic --no-input"
             pipenv run "python manage.py test"
 
-      - deploy:
-          name: Deploy develop to Heroku
-          command: |
-            heroku git:remote -a hc-bullss
-            git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD:refs/heads/master
-            sleep 5  # sleep for 5 seconds to wait for dynos
-            heroku restart
+  deploy-job:
+    steps:
+      - checkout
+      - run:
+        name: Deploy develop to Heroku
+        command: |
+          git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build-job
+      - deploy-job
+        requires:
+          - build-job
+        filters:
+          branches:
+            only: develop
