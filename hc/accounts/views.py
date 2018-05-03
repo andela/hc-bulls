@@ -1,6 +1,12 @@
 import uuid
 import re
 
+
+from datetime import timedelta
+from django.utils import timezone
+from collections import Counter
+
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
@@ -223,92 +229,38 @@ def profile(request):
 @login_required
 def reports_dashboard(request):
     profile = request.user.profile
-    # Switch user back to its default team
-    if profile.current_team_id != profile.id:
-        request.team = profile
-        profile.current_team_id = profile.id
-        profile.save()
+    new = Check.objects.filter(user=request.user)
+    q = new.filter(last_ping__isnull=False)
 
-    show_api_key = False
-    if request.method == "POST":
-        if "set_password" in request.POST:
-            profile.send_set_password_link()
-            return redirect("hc-set-password-link-sent")
-        elif "create_api_key" in request.POST:
-            profile.set_api_key()
-            show_api_key = True
-            messages.success(request, "The API key has been created!")
-        elif "revoke_api_key" in request.POST:
-            profile.api_key = ""
-            profile.save()
-            messages.info(request, "The API key has been revoked!")
-        elif "show_api_key" in request.POST:
-            show_api_key = True
-        elif "update_reports_allowed" in request.POST:
-            form = ReportSettingsForm(request.POST)
-            if form.is_valid():
-                profile.reports_frequency = form.data["reports_allowed"]
-                profile.save()
-                messages.success(request, "Your settings have been updated!")
-        elif "invite_team_member" in request.POST:
-            if not profile.team_access_allowed:
-                return HttpResponseForbidden()
+    checks = list(q)
+    counter = Counter()
+    down_tags, grace_tags = set(), set()
+    for check in checks:
+        status = check.get_status()
+        for tag in check.tags_list():
+            if tag == "":
+                continue
 
-            form = InviteTeamMemberForm(request.POST)
-            if form.is_valid():
+            counter[tag] += 1
 
-                email = form.cleaned_data["email"]
-                try:
-                    user = User.objects.get(email=email)
-                except User.DoesNotExist:
-                    user = _make_user(email)
-
-                profile.invite(user)
-                messages.success(request, "Invitation to %s sent!" % email)
-        elif "remove_team_member" in request.POST:
-            form = RemoveTeamMemberForm(request.POST)
-            if form.is_valid():
-
-                email = form.cleaned_data["email"]
-                farewell_user = User.objects.get(email=email)
-                farewell_user.profile.current_team = None
-                farewell_user.profile.save()
-
-                Member.objects.filter(team=profile,
-                                      user=farewell_user).delete()
-
-                messages.info(request, "%s removed from team!" % email)
-        elif "set_team_name" in request.POST:
-            if not profile.team_access_allowed:
-                return HttpResponseForbidden()
-
-            form = TeamNameForm(request.POST)
-            if form.is_valid():
-                profile.team_name = form.cleaned_data["team_name"]
-                profile.save()
-                messages.success(request, "Team Name updated!")
-
-    tags = set()
-    for check in Check.objects.filter(user=request.team.user):
-        tags.update(check.tags_list())
-
-    username = request.team.user.username
-    badge_urls = []
-    for tag in sorted(tags, key=lambda s: s.lower()):
-        if not re.match("^[\w-]+$", tag):
-            continue
-
-        badge_urls.append(get_badge_url(username, tag))
+            if status == "down":
+                down_tags.add(tag)
+            elif check.in_grace_period():
+                grace_tags.add(tag)
 
     ctx = {
-        "page": "profile",
-        "badge_urls": badge_urls,
-        "profile": profile,
-        "show_api_key": show_api_key
+        "page": "reports",
+        "checks": checks,
+        "now": timezone.now(),
+        "tags": counter.most_common(),
+        "down_tags": down_tags,
+        "grace_tags": grace_tags,
+        "reports_allowed": profile.reports_allowed,
+        "ping_endpoint": settings.PING_ENDPOINT
     }
 
-    return render(request, "accounts/reports.html", ctx)
 
+    return render(request, 'accounts/reports.html', ctx, new)
 @login_required
 def set_password(request, token):
     profile = request.user.profile
