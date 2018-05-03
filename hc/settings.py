@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HOST = "localhost"
 SECRET_KEY = "---"
 DEBUG = True
-ALLOWED_HOSTS = ['https://hc-bullss.herokuapp.com/', 'https://hc-bulls.herokuapp.com/', 'http://127.0.0.1:8000']
+ALLOWED_HOSTS = ['https://hc-bullss.herokuapp.com/', 'https://hc-bulls.herokuapp.com/']
 DEFAULT_FROM_EMAIL = 'healthchecks@example.org'
 USE_PAYMENTS = False
 DJMAIL_REAL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -153,7 +153,10 @@ EMAIL_PORT=os.environ['EMAIL_PORT']
 EMAIL_HOST_USER=os.environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD=os.environ['EMAIL_HOST_PASSWORD']
 EMAIL_USE_TLS=os.environ['EMAIL_USE_TLS']
-SITE_ROOT=os.environ['SITE_ROOT']
+if os.environ['SITE_ROOT']:
+    SITE_ROOT=os.environ['SITE_ROOT']
+else:
+    SITE_ROOT='http://127.0.0.1:8000'
 
 # Pushbullet integration -- override these in local_settings
 PUSHBULLET_CLIENT_ID = None
