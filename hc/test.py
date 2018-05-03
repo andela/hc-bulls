@@ -3,7 +3,6 @@ from django.test import TestCase
 
 from hc.accounts.models import Member, Profile
 
-
 class BaseTestCase(TestCase):
 
     def setUp(self):

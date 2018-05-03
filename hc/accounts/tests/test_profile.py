@@ -4,7 +4,6 @@ from hc.test import BaseTestCase
 from hc.accounts.models import Member
 from hc.api.models import Check
 
-
 class ProfileTestCase(BaseTestCase):
 
     def test_it_sends_set_password_link(self):

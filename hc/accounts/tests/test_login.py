@@ -3,7 +3,6 @@ from django.core import mail
 from django.test import TestCase
 from hc.api.models import Check
 
-
 class LoginTestCase(TestCase):
 
     def test_it_sends_link(self):
