@@ -1,17 +1,14 @@
 language: python
 python:
-  - "2.7"
   - "3.4"
 install:
     - pip install -r requirements.txt
-    - pip install mysqlclient
 env:
-  - DB=sqlite
-  - DB=mysql
   - DB=postgres
 addons:
   postgresql: "9.4"
 script:
+  - python manage.py collectstatic --no-input
   - coverage run --omit=*/tests/* --source=hc manage.py test
 after_success: coveralls
 cache: pip

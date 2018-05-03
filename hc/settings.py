@@ -12,15 +12,18 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 import os
 import warnings
+import django_heroku
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 HOST = "localhost"
 SECRET_KEY = "---"
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://hc-bullss.herokuapp.com/', 'https://hc-bulls.herokuapp.com/']
 DEFAULT_FROM_EMAIL = 'healthchecks@example.org'
 USE_PAYMENTS = False
+DJMAIL_REAL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
 
 
 INSTALLED_APPS = (
@@ -120,7 +123,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-SITE_ROOT = "http://localhost:8000"
+SITE_ROOT = SITE_ROOT = os.environ.get("SITE_ROOT") or "http://localhost:8000"
 PING_ENDPOINT = SITE_ROOT + "/ping/"
 PING_EMAIL_DOMAIN = HOST
 STATIC_URL = '/static/'
@@ -151,6 +154,12 @@ PUSHOVER_SUBSCRIPTION_URL = None
 PUSHOVER_EMERGENCY_RETRY_DELAY = 300
 PUSHOVER_EMERGENCY_EXPIRATION = 86400
 
+EMAIL_HOST=os.environ['EMAIL_HOST']
+EMAIL_PORT=os.environ['EMAIL_PORT']
+EMAIL_HOST_USER=os.environ['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD=os.environ['EMAIL_HOST_PASSWORD']
+EMAIL_USE_TLS=os.environ['EMAIL_USE_TLS']
+
 # Pushbullet integration -- override these in local_settings
 PUSHBULLET_CLIENT_ID = None
 PUSHBULLET_CLIENT_SECRET = None
@@ -159,3 +168,6 @@ if os.path.exists(os.path.join(BASE_DIR, "hc/local_settings.py")):
     from .local_settings import *
 else:
     warnings.warn("local_settings.py not found, using defaults")
+
+
+django_heroku.settings(locals())
