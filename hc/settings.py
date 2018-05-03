@@ -37,7 +37,8 @@ INSTALLED_APPS = (
     'hc.accounts',
     'hc.api',
     'hc.front',
-    'hc.payments'
+    'hc.payments',
+    'embed_video'
 )
 
 MIDDLEWARE = (
@@ -70,6 +71,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'hc.payments.context_processors.payments'
+                
             ],
         },
     },

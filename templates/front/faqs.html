@@ -1,9 +1,10 @@
 {% extends "base.html"%}
 {% load staticfiles %}
+{% load embed_video_tags %}
 
 {%block content%}
 <div class="row">
-    <h1 class="text-center">Frequently Asked Questions</h1>
+    <h1 class="text-center">FREQUENTLY ASKED QUESTIONS</h1>
 </div>
 <div class="row questions text-center">
     <button id="first_button" class="btn btn-group-lg">+ WHAT DOES HEALTHCHECKS DO?</button>
@@ -21,7 +22,14 @@
 </div>
 
 <div class="row">
-    <h1 class="text-center">Helpful videos</h1>
+    <h1 class="text-center">HELPFUL VIDEOS</h1>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+        <object style="height: 390px; width: 640px"><param name="movie" value="http://www.youtube.com/v/v1gTI4BOPUw?version=3"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><embed src="http://www.youtube.com/v/v1gTI4BOPUw?version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="640" height="390"></object>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6">
+        <object style="height: 390px; width: 640px"><param name="movie" value="http://www.youtube.com/v/v1gTI4BOPUw?version=3"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><embed src="http://www.youtube.com/v/v1gTI4BOPUw?version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="640" height="390"></object>
+    </div>
 </div>
 
 {% endblock %}
