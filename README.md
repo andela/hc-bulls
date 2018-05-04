@@ -1,5 +1,4 @@
-[![CircleCI](https://circleci.com/gh/andela/hc-bulls/tree/develop.svg?style=svg)](https://circleci.com/gh/andela/hc-bulls/tree/develop)
-[![Coverage Status](https://coveralls.io/repos/github/andela/hc-bulls/badge.svg?branch=develop)](https://coveralls.io/github/andela/hc-bulls?branch=develop)
+[![CircleCI](https://circleci.com/gh/andela/hc-bulls/tree/develop.svg?style=svg)](https://circleci.com/gh/andela/hc-bulls/tree/develop) [![Coverage Status](https://coveralls.io/repos/github/andela/hc-bulls/badge.svg?branch=develop)](https://coveralls.io/github/andela/hc-bulls?branch=develop)
 # healthchecks
 
 ![Screenshot of Welcome page](/stuff/screenshots/welcome.png?raw=true "Welcome Page")
@@ -10,7 +9,7 @@
 
 ![Screenshot of Channels page](/stuff/screenshots/channels.png?raw=true "Channels Page")
 
-healthchecks is a watchdog for your cron jobs. It's a web server that listens for pings from your cron jobs, plus a web interface.
+healthchecks is a watchdog for your cron jobs. It is a web server that listens for pings from your cron jobs, plus a web interface.
 
 It is live here: [http://healthchecks.io/](http://healthchecks.io/)
 
@@ -38,7 +37,7 @@ in development environment.
 
 * check out project code:
 
-        $ git clone https://github.com/healthchecks/healthchecks.git
+        $ git clone hhttps://github.com/andela/hc-bulls.git
 
 * install requirements (Django, ...) into virtualenv:
 
@@ -52,7 +51,7 @@ in development environment.
 
 * create database tables, triggers, superuser:
 
-        $ cd ~/webapps/healthchecks
+        $ cd ~/webapps/healthckecks
         $ ./manage.py migrate
         $ ./manage.py ensuretriggers
         $ ./manage.py createsuperuser
