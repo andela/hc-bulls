@@ -39,7 +39,7 @@ in development environment.
 
 * check out project code:
 
-        $ git clone hhttps://github.com/andela/hc-bulls.git
+        $ git clone https://github.com/andela/hc-bulls.git
 
 * install requirements (Django, ...) into virtualenv:
 
