@@ -41,7 +41,7 @@ INSTALLED_APPS = (
     'hc.api',
     'hc.front',
     'hc.payments',
-    'embed_video'
+    
 )
 
 MIDDLEWARE = (
@@ -150,11 +150,11 @@ PUSHOVER_SUBSCRIPTION_URL = None
 PUSHOVER_EMERGENCY_RETRY_DELAY = 300
 PUSHOVER_EMERGENCY_EXPIRATION = 86400
 
-EMAIL_HOST=os.environ['EMAIL_HOST']
-EMAIL_PORT=os.environ['EMAIL_PORT']
-EMAIL_HOST_USER=os.environ['EMAIL_HOST_USER']
-EMAIL_HOST_PASSWORD=os.environ['EMAIL_HOST_PASSWORD']
-EMAIL_USE_TLS=os.environ['EMAIL_USE_TLS']
+# EMAIL_HOST=os.environ['EMAIL_HOST']
+# EMAIL_PORT=os.environ['EMAIL_PORT']
+# EMAIL_HOST_USER=os.environ['EMAIL_HOST_USER']
+# EMAIL_HOST_PASSWORD=os.environ['EMAIL_HOST_PASSWORD']
+# EMAIL_USE_TLS=os.environ['EMAIL_USE_TLS']
 
 # Pushbullet integration -- override these in local_settings
 PUSHBULLET_CLIENT_ID = None
