@@ -60,7 +60,6 @@ $(function () {
         $("#update-timeout-timeout").val(rounded);
     });
 
-
     var graceSlider = document.getElementById("grace-slider");
     noUiSlider.create(graceSlider, {
         start: [20],
