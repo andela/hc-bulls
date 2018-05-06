@@ -7,7 +7,7 @@
 {% block content %}
 <div class="row">
     <div class="col-sm-12">
-        <h1 class="settings-title">Your Check Reports</h1>
+        <h1 class="settings-title">Currently Available Reports:</h1>
     </div>
     {% if messages %}
     <div class="col-sm-12">
@@ -27,7 +27,7 @@
                   <div role="tabpanel" class="tab-pane active" id="crontab">
                       <div class="row">
                           <div class="col-sm-12">
-                              <h4 class="settings-title">Currently Available Reports:</h4>
+                              <!-- <h4 class="settings-title">Currently Available Reports:</h4> -->
 
                           {% if checks %}
                               {% include "front/reports_desktop.html" %}
