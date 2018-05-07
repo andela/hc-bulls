@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/andela/hc-bulls/tree/develop.svg?style=svg)](https://circleci.com/gh/andela/hc-bulls/tree/develop) [![Coverage Status](https://coveralls.io/repos/github/andela/hc-bulls/badge.svg?branch=develop)](https://coveralls.io/github/andela/hc-bulls?branch=develop)
+[![CircleCI](https://circleci.com/gh/andela/hc-bulls/tree/develop.svg?style=svg)](https://circleci.com/gh/andela/hc-bulls/tree/develop) [![Coverage Status](https://coveralls.io/repos/github/andela/hc-bulls/badge.svg?branch=develop)](https://coveralls.io/github/andela/hc-bulls?branch=develop) [![Build Status](https://travis-ci.org/andela/hc-bulls.svg?branch=develop)](https://travis-ci.org/andela/hc-bulls)
 # healthchecks
 
 ![Screenshot of Welcome page](/stuff/screenshots/welcome.png?raw=true "Welcome Page")
@@ -37,7 +37,7 @@ in development environment.
 
 * check out project code:
 
-        $ git clone hhttps://github.com/andela/hc-bulls.git
+        $ git clone https://github.com/andela/hc-bulls.git
 
 * install requirements (Django, ...) into virtualenv:
 
