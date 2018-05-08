@@ -61,13 +61,13 @@ class Profile(models.Model):
             self.reports_allowed = False
             self.reports_frequency = 'Disabled'
             return
-
+        print(self.reports_frequency)
         if self.reports_frequency == 'Daily':
-            day = timedelta(seconds=2)
+            day = timedelta(days=1)
         elif self.reports_frequency == 'Weekly':
-            day = timedelta(seconds=7)
+            day = timedelta(days=7)
         elif self.reports_frequency == 'Monthly':
-            day = timedelta(seconds=10)
+            day = timedelta(days=30)
 
         now = timezone.now()
         self.next_report_date = now + day

@@ -30,10 +30,9 @@ jobs:
             - "/usr/local/lib/python3.6/site-packages"
       - run:
           command: |
-            pipenv run "pip install -r requirements.txt"
             pipenv run "python manage.py collectstatic --no-input"
             pipenv run "python manage.py test"
-  
+
   deploy:
     working_directory: ~/hc-bulls
     steps:

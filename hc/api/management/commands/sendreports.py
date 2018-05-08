@@ -29,7 +29,15 @@ class Command(BaseCommand):
 
     def handle_one_run(self):
         now = timezone.now()
-        month_before = now - timedelta(days=30)
+        if Profile.reports_frequency == 'Daily':
+            day = timedelta(days=1)
+        elif Profile.reports_frequency == 'Weekly':
+            day = timedelta(days=7)
+        elif Profile.reports_frequency == 'Monthly':
+            day = timedelta(days=30)
+
+
+        month_before = now - day
 
         report_due = Q(next_report_date__lt=now)
         report_not_scheduled = Q(next_report_date__isnull=True)
