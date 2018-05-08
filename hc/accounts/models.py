@@ -61,7 +61,6 @@ class Profile(models.Model):
             self.reports_allowed = False
             self.reports_frequency = 'Disabled'
             return
-        print(self.reports_frequency)
         if self.reports_frequency == 'Daily':
             day = timedelta(days=1)
         elif self.reports_frequency == 'Weekly':
