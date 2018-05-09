@@ -10,5 +10,4 @@ static-collected
 static/.DS_Store
 
 .env
-/staticfiles
 .vscode/*
