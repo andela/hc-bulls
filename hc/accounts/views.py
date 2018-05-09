@@ -161,7 +161,6 @@ def profile(request):
             show_api_key = True
         elif "update_reports_allowed" in request.POST:
             form = ReportsForm(request.POST)
-            print(form)
             if form.is_valid():
                 profile.reports_frequency = form.cleaned_data["reports_allowed"]
                 profile.save()
