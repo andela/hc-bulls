@@ -74,15 +74,15 @@
             <ul id="nav-main-sections" class="nav navbar-nav">
                 {% if request.user.is_authenticated %}
                     <li {% if page == 'checks' %} class="active" {% endif %}>
-                        <a href="{% url 'hc-checks' %}">Checks</a>
+                        <a href="{% url 'hc-checks' %}"><strong>Checks</strong></a>
                     </li>
 
                     <li {% if page == 'checks/unresolved' %} class="active" {% endif %}>
-                        <a href="{% url 'hc-unresolved' %}">Unresolved Checks</a>
+                        <a href="{% url 'hc-unresolved' %}"><strong>Unresolved Checks</strong></a>
                     </li>
 
                     <li {% if page == 'channels' %} class="active" {% endif %}>
-                        <a href="{% url 'hc-channels' %}">Integrations</a>
+                        <a href="{% url 'hc-channels' %}"><strong>Integrations</strong></a>
                     </li>
 
                 {% endif %}
@@ -90,16 +90,16 @@
 
                 {% if show_pricing %}
                 <li {% if page == 'pricing' %} class="active" {% endif %}>
-                    <a href="{% url 'hc-pricing' %}">Pricing</a>
+                    <a href="{% url 'hc-pricing' %}"><strong>Pricing</strong></a>
                 </li>
                 {% endif %}
 
                 <li {% if page == 'docs' %} class="active" {% endif %}>
-                    <a href="{% url 'hc-docs' %}">Docs</a>
+                    <a href="{% url 'hc-docs' %}"><strong>Docs</strong></a>
                 </li>
 
                 <li {% if page == 'about' %} class="active" {% endif %}>
-                    <a href="{% url 'hc-about' %}">About</a>
+                    <a href="{% url 'hc-about' %}"><strong>About</strong></a>
                 </li>
             </ul>
 
@@ -107,7 +107,7 @@
             {% if request.user.is_authenticated %}
             {% else %}
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'hc-login' %}">Log In</a></li>
+                <li><a href="{% url 'hc-login' %}"><strong>Log In</strong></a></li>
             </ul>
             {% endif %}
 

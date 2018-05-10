@@ -43,7 +43,7 @@ body {
 
 @media (min-width: 768px) {
     .navbar-default .navbar-nav > li.active > a, .navbar-default .navbar-nav > li > a:hover {
-        border-bottom: 5px solid #eee;
+        border-bottom: 5px solid #cccc;
         padding-bottom: 25px;
     }
 }
