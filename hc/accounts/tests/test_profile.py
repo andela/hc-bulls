@@ -35,7 +35,6 @@ class ProfileTestCase(BaseTestCase):
         message = mail.outbox[0]
 
         self.assertEqual(message.subject, 'Monthly Report')
-        print(message.body)
         self.assertIn("This is a Monthly report sent by healthchecks.io.", message.body)
 
 
