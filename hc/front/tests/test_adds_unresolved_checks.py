@@ -21,7 +21,6 @@ class MyChecksTestCase(BaseTestCase):
 		self.assertContains(response, "You don't have any checks that have not been resolved yet", status_code=200)
 
 	def test_it_marks_check_as_an_unresolved_check(self):
-		self.check = Check.query.filter_by(name="A simple test ping")
 		self.check_url = self.check.url()
 		self.client.get(self.check_url)
 		self.client.login(username='alice@example.org', password='password')
