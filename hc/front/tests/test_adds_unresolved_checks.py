@@ -5,20 +5,12 @@ from django.utils import timezone
 
 
 class MyChecksTestCase(BaseTestCase):
-    def setUp(self):
-        super(MyChecksTestCase, self).setUp()
-        self.check = Check(user=self.alice, name="Alice Was Here")
-        self.check.save()
+	def setUp(self):
+		super(MyChecksTestCase, self).setUp()
+		self.check = Check(user=self.alice, name="A simple test ping", timeout="td(minutes=1)", grace="td(minutes=1)")
+		self.check.save()
 
-    def test_it_works(self):
-        url = "/checks/add/"
-        self.client.login(username="alice@example.org", password="password")
-        r = self.client.post(url)
-        self.assertRedirects(r, "/checks/")
-        assert Check.objects.count() == 1
-
-    def test_it_contains_message_for_no_unresolved_checks(self):
-        url = "checks/unresolved"
-        self.client.login(username="alice@example.org", password="password")
-        r = self.client.post(url)
-        self.assertContains(r, "You don't have any checks not been resolved yet", status_code=200)
+	def test_it_creates_the_check(self):
+		self.client.login(username='alice@example.org', password='password')
+		response = self.client.get("/checks/")
+		self.assertContains(response, "A simple test ping", status_code=200)
