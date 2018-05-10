@@ -18,4 +18,4 @@ class MyChecksTestCase(BaseTestCase):
 	def test_it_contains_message_for_no_unresolved_check(self):
 		self.client.login(username='alice@example.org', password='password')
 		response = self.client.get("/checks/unresolved")
-		sel.assertContains(response, "You don't have any checks that have not been resolved yet", status_code=200)
+		self.assertContains(response, "You don't have any checks that have not been resolved yet", status_code=200)
