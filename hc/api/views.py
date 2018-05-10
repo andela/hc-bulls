@@ -24,6 +24,19 @@ def ping(request, code):
     if check.status in ("new", "paused"):
         check.status = "up"
 
+    if check.status not in ("down",):
+        if check.running_too_often():
+            check.status = "too often"
+        else:
+            check.status = "up"
+
+
+    now = timezone.now()
+    check.n_pings = F("n_pings") + 1
+    check.last_ping = now
+    # store expected time for next ping
+    check.next_ping = now + check.timeout
+
     check.save()
     check.refresh_from_db()
 
