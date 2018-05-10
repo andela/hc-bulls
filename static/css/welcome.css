@@ -22,8 +22,14 @@
     padding-bottom: 3em;
 }
 
+
 .footer-jumbo-bleed {
     background: #e5ece5;
+}
+
+#headline {
+    text-align: center;
+    color: #08311b;
 }
 
 #pitch {
