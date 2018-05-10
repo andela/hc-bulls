@@ -135,13 +135,6 @@
     padding-top: 4em;
 }
 
-.intro{
-    width: 100%;
-    height: 30vh;
-    margin-top: 8vh;
-    background: url(../img/intro.gif) no-repeat center center;
-    background-size: cover;
-    }
 
 .img-responsive{
     border-radius: 0.5em;
