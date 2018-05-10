@@ -24,5 +24,6 @@ class MyChecksTestCase(BaseTestCase):
 		self.check = Check.query.filter_by(name="A simple test ping")
 		self.check_url = self.check.url()
 		self.client.get(self.check_url)
-		response = response = self.client.get("/checks/")
+		self.client.login(username='alice@example.org', password='password')
+		response = self.client.get("/checks/unresolved")
 		self.assertContains(response, "A simple test ping", status_code=200)
