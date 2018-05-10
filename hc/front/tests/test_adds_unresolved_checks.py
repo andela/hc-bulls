@@ -2,6 +2,7 @@ from hc.api.models import Check
 from hc.test import BaseTestCase
 from datetime import timedelta as td
 from django.utils import timezone
+import time
 
 
 class MyChecksTestCase(BaseTestCase):
@@ -24,5 +25,6 @@ class MyChecksTestCase(BaseTestCase):
 		self.check_url = self.check.url()
 		self.client.get(self.check_url)
 		self.client.login(username='alice@example.org', password='password')
+		time.sleep(124)
 		response = self.client.get("/checks/unresolved")
 		self.assertContains(response, "A simple test ping", status_code=200)
