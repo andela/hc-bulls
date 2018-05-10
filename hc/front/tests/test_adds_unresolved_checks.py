@@ -18,7 +18,7 @@ class MyChecksTestCase(BaseTestCase):
         assert Check.objects.count() == 1
 
     def test_it_contains_message_for_no_unresolved_checks(self):
-        url = "checks/unresolved/"
+        url = "checks/unresolved"
         self.client.login(username="alice@example.org", password="password")
         r = self.client.post(url)
         self.assertContains(r, "You don't have any checks not been resolved yet", status_code=200)
