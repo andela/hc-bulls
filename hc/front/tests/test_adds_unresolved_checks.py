@@ -7,7 +7,7 @@ from django.utils import timezone
 class MyChecksTestCase(BaseTestCase):
 	def setUp(self):
 		super(MyChecksTestCase, self).setUp()
-		self.check = Check(user=self.alice, name="A simple test ping", timeout="td(minutes=1)", grace="td(minutes=1)")
+		self.check = Check(user=self.alice, name="A simple test ping", timeout="td(seconds=60)", grace="td(seconds=60)")
 		self.check.save()
 
 	def test_it_creates_the_check(self):
