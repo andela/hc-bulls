@@ -4,7 +4,7 @@ from hc.blog.models import BlogCategory,BlogPost
 class BlogPostForm(forms.ModelForm):
     class Meta:
         model=BlogPost
-        fields = ('title', 'content')
+        fields = ('title', 'content',)
         widgets={
             'category':forms.CheckboxInput()
         }
@@ -12,4 +12,4 @@ class BlogPostForm(forms.ModelForm):
 class BlogCategoryForm(forms.ModelForm):
     class Meta:
         model=BlogCategory
-        fields=('title')        
+        fields=('title',)        
