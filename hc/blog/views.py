@@ -3,11 +3,14 @@ from django.http  import HttpResponse
 from django.contrib.auth.decorators import login_required
 from hc.blog.forms import BlogCategoryForm,BlogPostForm
 from django.shortcuts import redirect
+from hc.blog.models import BlogCategory,BlogPost
 
 
 # Create your views here.
 def all_blogs(request):
-    return render(request, "blog/all_blogs.html")
+    blogs=BlogPost.objects.all()
+
+    return render(request, "blog/all_blogs.html",{"blogs":blogs})
 
 @login_required
 def new_blogs(request):

@@ -4,6 +4,17 @@
     <h1 class="text-center">ALL STORIES</h1>
 
 </div>
+<div class="row">
+    {% for blog in blogs %}
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    <h1>{{blog.title}}</h1>
+    </div>
+    {% empty %}
+    <h1 class="text-center">NO BLOGS AVAILABLE</h1>
+    {% endfor %}
+
+
+</div>
 
 {% endblock %}
 
