@@ -14,12 +14,16 @@
 
 .index-bleed {
     background: #FFF;
-    padding-bottom: 2em;
+    padding-bottom: 2em
+    padding-left:250px;
+
 }
 
 .get-started-bleed {
     background: #e5ece5; 
     padding-bottom: 3em;
+    text-align: center;
+    border: 1px solid green;
 }
 
 
@@ -30,6 +34,7 @@
 #headline {
     text-align: center;
     color: #08311b;
+    
 }
 
 #pitch {
@@ -125,7 +130,8 @@
 .first-login {
     width:81%;
     margin: 0 auto;
-    }
+    text-align: center;
+}
 
 .front-line {
     background: #ffffff;

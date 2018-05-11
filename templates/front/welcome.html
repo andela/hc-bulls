@@ -24,21 +24,22 @@
 
 {%endblock%}
 {% block containers %}
+
 <div class="index-bleed">
     <div class="container p">
         <div class="front-line row">
-            <div class="col-sm-7" id = "headline">
+            <div class="col-sm-" id = "headline">
 
                 <div class="Advert row">
-                    <div class="col-sm-12" >
-                        <h1 id="pitch"><strong>Cron Monitoring. Get Notified When Your Cron Jobs Fail.</strong></h1>
+                    <div class="col-sm-" >
+                        <h1 id="pitch" style="padding-left: 50px;, text-align: center;"><strong>Cron Monitoring. Get Notified When Your Cron Jobs Fail.</strong></h1>
                         <div id="pitch-small">
                             <span class="element"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="first-login row">
+                <div class="first-login row col-sm-6">
                     <form class="form-inline cta" action="{% url 'hc-login' %}" method="post">
                     {% csrf_token %}
 
