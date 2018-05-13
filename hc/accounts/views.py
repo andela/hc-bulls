@@ -20,6 +20,7 @@ from hc.api.models import Channel, Check
 from hc.lib.badges import get_badge_url
 
 class Error404View(TemplateView):
+    """ Error 404 view"""
     template_name = '404.html'
 
     def get(self, request, *args, **kwargs):
@@ -37,6 +38,7 @@ class Error404View(TemplateView):
         return view
 
 class Error500View(TemplateView):
+    """ Error 500 view"""
     template_name = '500.html'
 
     def get(self, request, *args, **kwargs):
