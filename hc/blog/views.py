@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from hc.blog.forms import BlogCategoryForm,BlogPostForm
 from django.shortcuts import redirect
 from hc.blog.models import BlogCategory,BlogPost
+from django.http import Http404, HttpResponse
 
 
 # Create your views here.
@@ -25,6 +26,11 @@ def new_blogs(request):
     else:
         blog=BlogPostForm()   
     return render(request, "blog/new_blog.html",{"blog":blog})
+
+
+def blog(request,blog_id):
+    blog=BlogPost.objects.get(id=blog_id)
+    return  render(request,"blog/single_blog.html",{"blog":blog})           
 
                
 
