@@ -1,0 +1,15 @@
+.form_row{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.blog_details{
+    margin-top:10px;
+    margin-bottom: 10px 
+}
+a{
+    color:inherit;
+}
+.single_blog_row{
+    margin-left: 80px;
+    margin-right: 80px;
+}
