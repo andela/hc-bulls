@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'hc.api',
     'hc.front',
     'hc.payments',
-    'hc.blog'
+    'hc.blog',
+    'tinymce'
 )
 
 MIDDLEWARE = (

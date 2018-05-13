@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^', include('hc.api.urls')),
     url(r'^', include('hc.front.urls')),
     url(r'^', include('hc.payments.urls')),
-    url(r'^', include('hc.blog.urls'))
+    url(r'^', include('hc.blog.urls')),
+    url(r'^tinymce', include('tinymce.urls'))
 ]
