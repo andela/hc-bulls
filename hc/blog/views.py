@@ -26,16 +26,7 @@ def new_blogs(request):
         blog=BlogPostForm()   
     return render(request, "blog/new_blog.html",{"blog":blog})
 
-@login_required
-def new_category(request):
-    if request.method == "POST":
-        category_form=BlogCategoryForm(request.POST)
-        if category_form.is_valid():
-            category=category_form.save(commit=False)
-            category.save()
-    else:
-        category=BlogCategoryForm()
-    return render(request, "blog/new_blog.html",{"category":category})                
+               
 
 
 
