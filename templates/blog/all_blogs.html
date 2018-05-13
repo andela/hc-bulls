@@ -7,8 +7,8 @@
     {% for blog in blogs %}
     <a href="{% url 'hc-single_blog' blog.id%}">
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 blog_col">
+    <h4>{{blog.category}}</h4>    
     <h1>{{blog.title|title}}</h1>
-    
     <h4 class="blogs_details">Published on: {{blog.created_on}}</h4>
     </div>
     </a>
