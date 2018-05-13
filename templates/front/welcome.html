@@ -4,13 +4,13 @@
 {% block containers %}
 <div class="index-bleed">
 <div class="container">
-    <div class="row">
+    <div class="row padded">
     <div class="col-sm-12">
         <h1 id="pitch">Cron Monitoring. Get Notified When Your Cron Jobs Fail.</h1>
     </div>
     </div>
 
-    <div class="row">
+    <div class="row padded">
     <div class="col-sm-6 col-sm-push-6">
         <p id="pitch-text">Make a HTTP GET request to this address from your cron job, daemon, script or long running task.
         <strong>When this address is not requested for a set time period, you will get alerted.</strong> Below are snippets that are ready to be copy/pasted into your own scripts.</p>
@@ -29,7 +29,7 @@
     </div>
 
 
-    <div class="row">
+    <div class="row padded program-tabs">
         <div class="col-sm-12">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="active">
@@ -97,7 +97,7 @@
 
 <div class="get-started-bleed">
 <div class="container">
-    <div class="row">
+    <div class="row email-form">
         <div id="get-started" class="col-sm-6 col-sm-offset-3">
             <h2>E-mail Address to Receive Alerts:</h2>
             <form action="{% url 'hc-login' %}" method="post">
@@ -128,9 +128,9 @@
 </div>
 
 <div class="container">
-    <div class="row">
+    <div class="row tour-title">
     <div class="col-sm-12">
-        <h2 class="tour-title">A quick peek of what's inside:</h2>
+        <h2 class="">A quick peek of what's inside:</h2>
     </div>
     </div>
 
@@ -144,7 +144,7 @@
     </div>
     <div class="col-sm-4">
         <p>
-            A list of your checks, one for each Cron job, daemon or
+            <b>A list of your checks</b>, one for each Cron job, daemon or
             periodically running task you want to monitor.
         </p>
         <p>
