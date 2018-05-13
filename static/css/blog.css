@@ -3,8 +3,8 @@
     margin-right: 50px;
 }
 .blog_details{
-    margin-top:10px;
-    margin-bottom: 10px 
+    margin-top:5px;
+    margin-bottom:5px 
 }
 a{
     color:inherit;
@@ -12,4 +12,10 @@ a{
 .single_blog_row{
     margin-left: 80px;
     margin-right: 80px;
+}
+.add_blog{
+    display: block;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px; 
 }

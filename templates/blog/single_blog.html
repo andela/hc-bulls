@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block content %}
 <div class="row single_blog_row">
     <h5 class="text-center">{{blog.created_on}}</h5>
     
-    <h1 class="text-center">{{blog.title}}</h1>
+    <h1 class="text-center">{{blog.title|title }}</h1>
     
     <p class="text-center">{{blog.content}}</p>
 
