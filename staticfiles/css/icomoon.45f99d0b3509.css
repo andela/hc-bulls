@@ -54,6 +54,9 @@
 .icon-down:before {
   content: "\e7f8";
 }
+.icon-often:before {
+  content: "\e7f8";
+}
 .icon-paused:before {
   content: "\e7f7";
 }
