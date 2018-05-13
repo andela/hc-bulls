@@ -19,7 +19,7 @@ class NameTagsForm(forms.Form):
 
 class TimeoutForm(forms.Form):
     timeout = forms.IntegerField(min_value=60, max_value=7776000)
-    grace = forms.IntegerField(min_value=60, max_value=7776000)
+    grace = forms.IntegerField(min_value=60, max_value=3600)
 
 
 class AddChannelForm(forms.ModelForm):
