@@ -36,7 +36,6 @@ $(function () {
         connect: "lower",
         range: {
             'min': [60, 60],
-<<<<<<< HEAD
             '25%': [3600, 3600],
             '45%': [86400, 86400],
             '55%': [604800, 604800],
@@ -47,16 +46,6 @@ $(function () {
         pips: {
             mode: 'values',
             values: [60, 1800, 3600, 43200, 86400, 604800, 2592000, 5184000, 7776000],
-=======
-            '33%': [3600, 3600],
-            '66%': [86400, 86400],
-            '83%': [604800, 604800],
-            'max': 2592000,
-        },
-        pips: {
-            mode: 'values',
-            values: [60, 1800, 3600, 43200, 86400, 604800, 2592000],
->>>>>>> f07e17b9304980022dc6d609ba0ae8ba4360de4e
             density: 4,
             format: {
                 to: secsToText,
@@ -71,17 +60,12 @@ $(function () {
         $("#update-timeout-timeout").val(rounded);
     });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> f07e17b9304980022dc6d609ba0ae8ba4360de4e
     var graceSlider = document.getElementById("grace-slider");
     noUiSlider.create(graceSlider, {
         start: [20],
         connect: "lower",
         range: {
             'min': [60, 60],
-<<<<<<< HEAD
             '25%': [3600, 3600],
             '45%': [86400, 86400],
             '55%': [604800, 604800],
@@ -92,16 +76,6 @@ $(function () {
         pips: {
             mode: 'values',
             values: [60, 1800, 3600, 43200, 86400, 604800, 2592000, 5184000, 7776000],
-=======
-            '33%': [3600, 3600],
-            '66%': [86400, 86400],
-            '83%': [604800, 604800],
-            'max': 2592000,
-        },
-        pips: {
-            mode: 'values',
-            values: [60, 1800, 3600, 43200, 86400, 604800, 2592000],
->>>>>>> f07e17b9304980022dc6d609ba0ae8ba4360de4e
             density: 4,
             format: {
                 to: secsToText,
