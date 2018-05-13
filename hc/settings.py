@@ -41,7 +41,8 @@ INSTALLED_APPS = (
     'hc.front',
     'hc.payments',
     'hc.blog',
-    'tinymce'
+    'tinymce',
+    'bootstrap3'
 )
 
 MIDDLEWARE = (
