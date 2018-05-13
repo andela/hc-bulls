@@ -43,6 +43,9 @@ INSTALLED_APPS = (
     'hc.blog',
     'tinymce',
     'bootstrap3'
+
+    
+
 )
 
 MIDDLEWARE = (
@@ -75,6 +78,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'hc.payments.context_processors.payments'
+                
             ],
         },
     },
@@ -150,6 +154,7 @@ PUSHOVER_SUBSCRIPTION_URL = None
 PUSHOVER_EMERGENCY_RETRY_DELAY = 300
 PUSHOVER_EMERGENCY_EXPIRATION = 86400
 
+#email configuration
 EMAIL_HOST=os.environ['EMAIL_HOST']
 EMAIL_PORT=os.environ['EMAIL_PORT']
 EMAIL_HOST_USER=os.environ['EMAIL_HOST_USER']

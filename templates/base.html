@@ -30,7 +30,11 @@
     <link rel="stylesheet" href="{% static 'css/log.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/add_pushover.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/settings.css' %}" type="text/css">
+
     <link rel="stylesheet" href="{% static 'css/blog.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'css/faqs.css' %}" type="text/css">
+
     {% endcompress %}
 </head>
 <body class="page-{{ page }}">
@@ -106,6 +110,10 @@
 
                 <li {% if page == 'blog' %} class="active" {% endif %}>
                         <a href="{% url 'hc-blogs' %}">All Stories</a>
+
+                <li {% if page == 'faqs' %} class="active" {% endif %}>
+                    <a href="{% url 'hc-help-desk' %}">HELP-DESK</a>
+
                 </li>
             </ul>
 
