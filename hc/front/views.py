@@ -147,6 +147,10 @@ def docs_api(request):
 def about(request):
     return render(request, "front/about.html", {"page": "about"})
 
+def help_desk(request):
+    #for the help desk
+    return render(request, "front/faqs.html")  
+
 
 @login_required
 def add_check(request):

@@ -1,0 +1,77 @@
+{% extends "base.html"%}
+{% load staticfiles %}
+
+
+{%block content%}
+<div class="row">
+    <h1>FREQUENTLY ASKED QUESTIONS</h1>
+</div>
+<div class="row">
+    <button id="first_button" class="btn btn-group-lg">+ WHAT DOES HEALTHCHECKS DO?</button>
+    <div class="row" id="firstQuestion">The platform monitors your cron jobs and notifies you when they fail</div>
+</div>
+
+<div class="row newer-question">
+    <button id="second_button" class="btn btn-group-lg">+ WHAT IS A CRON JOB?</button>
+    <div class="row" id="secondQuestion">This are tasks that are created on your server to run automatically after a period of time</div>   
+</div>
+
+<div class="row  newer-question">
+    <button id="third_button" class="btn btn-group-lg">+ HOW DOES IT NOTIFY ME?</button>
+    <div class="row" id="thirdQuestion">It will send notifications through your preferred channel.</div>   
+</div>
+
+<div class="row  newer-question">
+    <button id="fourth_button" class="btn btn-group-lg">+ WHAT ARE THE CHANNELS OF COMMUNICATION?</button>
+    <div class="row" id="fourthQuestion">The notifications will be sent through email,sms, slack and telegram plus other common channels.</div>   
+</div>
+
+<div class="row newer-question">
+    <button id="fifth_button" class="btn btn-group-lg">+ WILL IT NAG ME?</button>
+    <div class="row" id="fifthQuestion">Yes it will nag you if you do not attend to a cron job that is down.</div>   
+</div>
+
+<div class="row newer-question">
+    <button id="sixth_button" class="btn btn-group-lg">+ WHY SHOULD I USE HEALTHCHECKS?</button>
+    <div class="row" id="sixthQuestion">It will give you peace of mind as you are sure any down time will be reported immediately.</div>   
+</div>
+
+<div class="row newer-question">
+    <button id="seventh_button" class="btn btn-group-lg">+ HOW DO I PAY?</button>
+    <div class="row" id="seventhQuestion">Payments are through mastercard, Visa, PayPal and American Express.</div>   
+</div>
+
+<div class="row newer-question">
+    <button id="eighth_button" class="btn btn-group-lg">+ WHAT PROGRAMMING LANGUAGES CAN I USE HEALTHCHECKS WITH?</button>
+    <div class="row" id="eighthQuestion">You can use it with any language that can fetch a url. Like python and ruby.</div>   
+</div>
+
+<div class="row newer-question">
+    <button id="nineth_button" class="btn btn-group-lg">+ HOW LONG IS IT BETWEEN PINGS?</button>
+    <div class="row" id="ninethQuestion">You can configure the period between each ping according to your preference.</div>   
+</div>
+
+
+<div class="row video_row">
+    <h1 class="text-center">HELPFUL VIDEOS</h1>
+
+    <div class="col-sm-6 col-md-6 col-lg-6">
+    <div class="help_video"><iframe  width="500" height="360" src="https://www.youtube.com/embed/1tXOLqnjSg8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+    </div>
+
+
+    <div class="col-sm-6 col-md-6 col-lg-6">
+    <iframe width="500" height="360" src="https://www.youtube.com/embed/KK2smasHg6w" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/moment.min.js' %}"></script>
+<script src="{% static 'js/faq.js' %}"></script>
+{% endblock %}

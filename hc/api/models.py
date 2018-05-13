@@ -17,7 +17,8 @@ STATUSES = (
     ("up", "Up"),
     ("down", "Down"),
     ("new", "New"),
-    ("paused", "Paused")
+    ("paused", "Paused"),
+    ("too often", "Too often")
 )
 DEFAULT_TIMEOUT = td(days=1)
 DEFAULT_GRACE = td(hours=1)
@@ -50,8 +51,9 @@ class Check(models.Model):
     grace = models.DurationField(default=DEFAULT_GRACE)
     n_pings = models.IntegerField(default=0)
     last_ping = models.DateTimeField(null=True, blank=True)
+    next_ping = models.DateTimeField(null=True, blank=True)
     alert_after = models.DateTimeField(null=True, blank=True, editable=False)
-    status = models.CharField(max_length=6, choices=STATUSES, default="new")
+    status = models.CharField(max_length=9, choices=STATUSES, default="new")
 
     def name_then_code(self):
         if self.name:
@@ -69,7 +71,7 @@ class Check(models.Model):
         return "%s@%s" % (self.code, settings.PING_EMAIL_DOMAIN)
 
     def send_alert(self):
-        if self.status not in ("up", "down"):
+        if self.status not in ("up", "down", "too often"):
             raise NotImplementedError("Unexpected status: %s" % self.status)
 
         errors = []
@@ -85,11 +87,24 @@ class Check(models.Model):
             return self.status
 
         now = timezone.now()
+        if self.status == 'too often':
+            if now > self.next_ping:
+                return "down"
+            return self.status
 
         if self.last_ping + self.timeout + self.grace > now:
             return "up"
 
         return "down"
+
+    def running_too_often(self):
+        if not self.last_ping:
+            return False
+
+        now = timezone.now()
+        if self.next_ping - self.grace > now:
+            self.send_alert()
+            return True
 
     def in_grace_period(self):
         if self.status in ("new", "paused"):
