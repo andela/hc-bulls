@@ -43,9 +43,6 @@ INSTALLED_APPS = (
     'hc.blog',
     'tinymce',
     'bootstrap3'
-
-    
-
 )
 
 MIDDLEWARE = (
