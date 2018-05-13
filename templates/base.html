@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{% static 'css/log.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/add_pushover.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/settings.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/faqs.css' %}" type="text/css">
     {% endcompress %}
 </head>
 <body class="page-{{ page }}">
@@ -100,6 +101,10 @@
 
                 <li {% if page == 'about' %} class="active" {% endif %}>
                     <a href="{% url 'hc-about' %}">About</a>
+                </li>
+
+                <li {% if page == 'faqs' %} class="active" {% endif %}>
+                    <a href="{% url 'hc-help-desk' %}">HELP-DESK</a>
                 </li>
             </ul>
 
