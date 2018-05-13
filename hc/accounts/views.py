@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from django.core import signing
 from django.http import HttpResponseForbidden, HttpResponseBadRequest
 from django.shortcuts import redirect, render
+from django.views.generic.base import TemplateView
 from hc.accounts.forms import (EmailPasswordForm, InviteTeamMemberForm,
                                RemoveTeamMemberForm, ReportSettingsForm,
                                SetPasswordForm, TeamNameForm)
@@ -18,6 +19,39 @@ from hc.accounts.models import Profile, Member
 from hc.api.models import Channel, Check
 from hc.lib.badges import get_badge_url
 
+class Error404View(TemplateView):
+    template_name = '404.html'
+
+    def get(self, request, *args, **kwargs):
+        response = super(Error404View, self).get(request, *args, **kwargs)
+        response.status_code = 404
+        return response
+
+    @classmethod
+    def as_error_view(cls):
+        v = cls.as_view()
+        def view(request):
+            r = v(request)
+            r.render()
+            return r
+        return view
+
+class Error500View(TemplateView):
+    template_name = '500.html'
+
+    def get(self, request, *args, **kwargs):
+        response = super(Error500View, self).get(request, *args, **kwargs)
+        response.status_code = 500
+        return response
+
+    @classmethod
+    def as_error_view(cls):
+        v = cls.as_view()
+        def view(request):
+            r = v(request)
+            r.render()
+            return r
+        return view
 
 def _make_user(email):
     username = str(uuid.uuid4())[:30]
