@@ -10,32 +10,23 @@
 }
 .page-welcome .navbar {
     margin-bottom: 0;
+    margin: 25px 50px;
 }
 
 .index-bleed {
     background: #FFF;
-    padding-bottom: 2em
-    padding-left:250px;
-
+    padding-bottom: 2em;
 }
 
 .get-started-bleed {
-    background: #e5ece5; 
+    background: #e5ece5;
     padding-bottom: 3em;
-    text-align: center;
-    border: 1px solid green;
 }
-
 
 .footer-jumbo-bleed {
-    background: #e5ece5;
+    background: #eee;
 }
 
-#headline {
-    text-align: center;
-    color: #08311b;
-    
-}
 
 #pitch {
     text-align: center;
@@ -130,8 +121,7 @@
 .first-login {
     width:81%;
     margin: 0 auto;
-    text-align: center;
-}
+    }
 
 .front-line {
     background: #ffffff;
@@ -141,6 +131,13 @@
     padding-top: 4em;
 }
 
+.intro{
+    width: 100%;
+    height: 30vh;
+    margin-top: 8vh;
+    background: url(../img/intro.gif) no-repeat center center;
+    background-size: cover;
+    }
 
 .img-responsive{
     border-radius: 0.5em;
@@ -173,13 +170,14 @@
      margin: 0 auto;
     }
 
-.navbar-default { 
-    background-color: #e5ece5;
+.navbar-default {
+    background-color: #08311b;
     border-color: #eeeeee;
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: #08311b;
+    color: #ffffff;
+    /* background: #22bc66; */
 }
 
 .input-group-lg > .form-control, .input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .btn {
@@ -209,6 +207,8 @@
     font-family: 'Montserrat', sans-serif;
     line-height: 1.8em;
     font-size:14px;
+    margin: 3px 2px;
+
 }
 
 .teamwork{
@@ -218,6 +218,10 @@
 
     }
 
+.team-hands{
+    padding: 3em;
+    margin-left: 3.4em;
+    }
 
 .integration-info{
     padding-top: 4em;
@@ -238,6 +242,12 @@
 
 .tour-section{
     padding-bottom: 2em;
+    margin: 3px 2px;
+    }
+
+.team-work-svg{
+    padding-bottom: 4em;
+    margin-left: 5em;
     }
 
 .unique-ping{
@@ -255,13 +265,13 @@
     }
 
 .row{
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+   margin: 25px 50px
+   text-align:center;
     }
 
 .jumbotron-color {
-    background: #e5ece5;
-    color: #08311b;
+    background: #08311b;
+    color: #fff;
     padding: 5em 5em 1em 5em;
     font-family: 'Montserrat', sans-serif;
     line-height: 1.8em;
@@ -269,6 +279,6 @@
     }
 
 .jumbo-bleed-color {
-    background: #e5ece5;
+    background: #08311b;
 
     }
