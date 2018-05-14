@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^', include('hc.payments.urls'))
 ]
 
+# Handles 404 and 500 url
 handler404 = views.Error404View.as_error_view()
 handler500 = views.Error500View.as_error_view()
