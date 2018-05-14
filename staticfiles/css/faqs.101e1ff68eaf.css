@@ -1,0 +1,16 @@
+.questions{
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+.newer-question{
+    margin-top:10px;
+}
+.help_video{
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+.video_row{
+    margin-top:50px;
+}
