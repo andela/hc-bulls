@@ -59,4 +59,13 @@ class MyChecksTestCase(BaseTestCase):
         # Mobile
         self.assertContains(r, "label-warning")
 
+    def test_timeout_period_extended(self):
+        self.check = Check(user=self.alice, name="extended check", timeout=td(days=67), grace=td(days=1))
+        self.check.save()
+
+        self.client.login(username="alice@example.org", password="password")
+        r = self.client.get("/checks/")
+        self.assertContains(r, "extended check")
+
+
     
