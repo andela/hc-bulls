@@ -20,3 +20,12 @@ class BasicsTestCase(TestCase):
         assert r.status_code == 200
         assert code != "x"
         assert Check.objects.filter(code=code).exists()
+
+    def test_welcome_page_displays_info_about_creating_checks(self):
+        r = self.client.get('/')
+        self.assertContains(r, "Create and Schedule Checks", status_code=200)
+
+    def test_welcome_page_displays_info_about_receiving_a_checks_history(self):
+        r = self.client.get('/')
+        self.assertContains(
+            r, "Get a Summary of Your Checks History", status_code=200)
